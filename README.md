@@ -1,37 +1,56 @@
 # JDL Whisper STT
 
-**Speech-to-Text application built with Deep Java Library (DJL) and OpenAI Whisper**
+[![Java](https://img.shields.io/badge/Java-17-orange.svg)](https://openjdk.org/)
+[![DJL](https://img.shields.io/badge/DJL-0.30.0-blue.svg)](https://djl.ai/)
+[![PyTorch](https://img.shields.io/badge/Engine-PyTorch-red.svg)](https://pytorch.org/)
+[![Whisper](https://img.shields.io/badge/Model-Whisper-green.svg)](https://github.com/openai/whisper)
+[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Maven](https://img.shields.io/badge/Build-Maven-brightgreen.svg)](https://maven.apache.org/)
 
-A pure Java implementation of offline speech recognition using the Whisper model via Deep Java Library. No Python required.
+**Offline Speech-to-Text in pure Java using Deep Java Library (DJL) and OpenAI Whisper**
+
+A high-performance speech recognition application built entirely in Java. It uses Deep Java Library (DJL) with the PyTorch engine to run OpenAI's Whisper model — **no Python runtime required**.
+
+## Why PyTorch?
+
+Whisper was originally trained using PyTorch (Python).  
+Deep Java Library (DJL) allows us to load and run the same PyTorch model **directly from Java** by using the PyTorch native engine under the hood.
+
+- You write and run pure Java code
+- DJL automatically downloads and manages the PyTorch native libraries
+- No need to install Python or call any Python scripts
 
 ## Features
 
-- Offline speech-to-text using Whisper (tiny.en model by default)
-- Microphone recording support
+- Offline speech-to-text using Whisper (`tiny.en` by default)
+- Real-time microphone recording
 - Transcribe existing WAV files
-- Built entirely in Java with Deep Java Library (DJL)
-- Automatic model and native library download on first run
-- Clean Maven project structure
+- Fully written in Java
+- Automatic model + native library download on first run
+- Maven project with fat JAR packaging
 
 ## Tech Stack
 
 - **Java 17**
 - **Deep Java Library (DJL)** 0.30.0
 - **PyTorch Engine** (via DJL)
-- **OpenAI Whisper** (`whisper-tiny.en`)
+- **OpenAI Whisper** (`openai/whisper-tiny.en`)
 - **Maven**
 
 ## Prerequisites
 
 - JDK 17 or higher
 - Maven 3.8+
-- Microphone (for recording)
+- Working microphone (for recording)
 
 ## Project Structure
 
 ```
 jdl-whisper-stt/
-│
+├── pom.xml
+├── README.md
+├── LICENSE
+├── .gitignore
 ├── src/
 │   └── main/
 │       ├── java/
@@ -43,11 +62,7 @@ jdl-whisper-stt/
 │       │       └── util/
 │       │           └── AudioUtils.java
 │       └── resources/
-├──  audio/                  # Recorded files (generated at runtime)
-├── .gitignore
-├── LICENSE
-├── README.md
-└── pom.xml
+└── audio/                  # Generated at runtime
 ```
 
 ## Getting Started
@@ -71,30 +86,32 @@ mvn clean package
 java -jar target/jdl-whisper-stt-1.0.0-jar-with-dependencies.jar
 ```
 
-> **Note**: On the first run, DJL will automatically download the Whisper model and PyTorch native libraries. This may take several minutes depending on your internet connection.
+> **First run note**: DJL will automatically download the Whisper model and PyTorch native libraries. This can take several minutes depending on your internet speed.
 
 ## Usage
 
-When the application starts, you will see a simple menu:
+After launching the app, you will see a simple menu:
 
 1. Record and transcribe (5 seconds)
 2. Record for custom duration
 3. Transcribe an existing WAV file
 4. Exit
 
-## Important Notes
+## Changing the Whisper Model
 
-- Audio is recorded and processed at **16 kHz mono** (Whisper requirement).
-- The default model is `openai/whisper-tiny.en` for speed. You can change it to `whisper-base.en` or `whisper-small.en` in `WhisperService.java` for better accuracy.
-- Make sure your system has a working microphone.
+By default, the project uses `whisper-tiny.en` for speed.  
+You can change it to a more accurate model in `WhisperService.java`:
+
+- `openai/whisper-base.en`
+- `openai/whisper-small.en`
+- `openai/whisper-medium.en`
 
 ## License
 
-This project is open source and available under the MIT License.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ## Author
 
 **Abdullahi Bundi**  
 Maiduguri / Borno, Nigeria
-
 
