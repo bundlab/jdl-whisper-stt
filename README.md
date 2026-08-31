@@ -31,8 +31,7 @@ A pure Java implementation of offline speech recognition using the Whisper model
 
 ```
 jdl-whisper-stt/
-├── pom.xml
-├── README.md
+│
 ├── src/
 │   └── main/
 │       ├── java/
@@ -44,7 +43,11 @@ jdl-whisper-stt/
 │       │       └── util/
 │       │           └── AudioUtils.java
 │       └── resources/
-└── audio/                  # Recorded files (generated at runtime)
+├──  audio/                  # Recorded files (generated at runtime)
+├── .gitignore
+├── LICENSE
+├── README.md
+└── pom.xml
 ```
 
 ## Getting Started
@@ -93,9 +96,5 @@ This project is open source and available under the MIT License.
 
 **Abdullahi Bundi**  
 Maiduguri / Borno, Nigeria
-
-
----
-
 
 
