@@ -1,4 +1,4 @@
-# JDL Whisper STT
+# JDL Whisper STT (AI Meeting Assistant)
 
 [![Java](https://img.shields.io/badge/Java-17-orange.svg)](https://openjdk.org/)
 [![DJL](https://img.shields.io/badge/DJL-0.30.0-blue.svg)](https://djl.ai/)
